@@ -51,8 +51,19 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
 
-    ## Has the inverse been cached? If yes, just return it
-#     if (exists("x$getInv") && !is.null(x$getInv())) {
+    ## Is this a cached-inverse or a plain matrix?
+    isCachedMatrix <- is.list(x) && length(x[["getInv"]]) > 0
+
+    ## Plain matrix: solve() pass-through
+    if (!isCachedMatrix) {
+        ## Regular matrix: compute inverse every time
+        message("regular matrix: computing inverse")
+        # compute inverse; issue errors just like regular solve
+        return(solve(x))
+    }
+
+    ## Cahed-inverse: has the inverse been cached?
+    ## If yes, just return it
     if (!is.null(x$getInv())) {
         message("getting cached inverse")
         return(x$getInv())

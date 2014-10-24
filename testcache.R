@@ -29,11 +29,11 @@ cacheSolve(makeCacheMatrix(a)) # not cached
 cacheSolve(a) ## plain matrix input ok: no cached inverse, no problem
 
 
-## -- singular input: complain exactly like solve()
-s = matrix(c(1,2,2,4), 2,2) # singular matrix
-s
-## --- this must be the last line:  script will stop with error
-cacheSolve(s) ## error, just like solve(s) -- will stop
+# ## -- singular input: complain exactly like solve()
+# s = matrix(c(1,2,2,4), 2,2) # singular matrix
+# s
+# ## --- this must be the last line:  script will stop with error
+# cacheSolve(s) ## error, just like solve(s) -- will stop
 
 
 

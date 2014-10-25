@@ -15,7 +15,8 @@ cacheSolve(ca) ## 1st call: compute and cache
 cacheSolve(ca) ## 2nd call: retrieve cached
 
 ## -- another cached object
-cb = makeCacheMatrix(2*a) ## another cached-inverse matrix
+b = a/2
+cb = makeCacheMatrix(b) ## another cached-inverse matrix
 cacheSolve(cb) ## 1st call: compute and cache; different inverse
 solve(b) ## this is the correct inverse
 cacheSolve(cb) ## 2nd call: retrieve cached inverse
